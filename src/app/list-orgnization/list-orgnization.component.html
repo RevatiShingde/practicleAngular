@@ -1,0 +1,71 @@
+<nav class=" navbar navbar-light bg-primary">
+    <div class="container-fluid">
+        <h1></h1>
+        <div class="d-flex">
+                <button type="button" class="mr-2 btn btn-success" data-toggle="modal" data-target="#exampleModal">Add Organization</button>
+                <button class="btn btn-danger"(click)="logout()">LOGOUT</button>
+        </div>
+    </div>
+</nav>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Organization Name</th>
+            <th>Short Name</th>
+            <th>URL</th>
+            <th>Logo</th>
+        </tr>
+    </thead>
+    <tbody class="table">
+        <tr *ngFor="let org of organizationsArr" class="active">
+            <td style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{org.organizationName | slice:0:100 }}</td>
+            <td style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{org.organizationShortName}}</td>
+            <td>{{org.organizationURL}}</td>
+            <td>{{org.organizationLOGO}}</td>
+        </tr>
+    </tbody>
+</table>
+  
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="organizationForm">
+                <div class="mb-3">
+                    <label for="organizationName">Organization Name</label>
+                    <input formControlName="organizationName" type="text" class="form-control" style="max-width: 100ch;">
+                    <div *ngIf="(getOrganizationFormControls()['organizationName']?.touched && getOrganizationFormControls()['organizationName']?.invalid) && getOrganizationFormControls()['organizationName']?.errors?.['required']" class="text-danger">enter valid password is required field</div>
+                    <div *ngIf="getOrganizationFormControls()['organizationName']?.errors?.['maxlength']" class="text-danger">you can enter only 100 charachers</div>
+                </div>
+                <div class="mb-3">
+                    <label for="organizationShortName">Organization ShortName</label>
+                    <input formControlName="organizationShortName" type="text" class="form-control">
+                    <div *ngIf="(getOrganizationFormControls()['organizationShortName']?.touched && getOrganizationFormControls()['organizationShortName']?.invalid) && getOrganizationFormControls()['organizationShortName']?.errors?.['required']" class="text-danger">enter valid password is required field</div>
+                    <div *ngIf="getOrganizationFormControls()['organizationShortName']?.errors?.['maxlength']" class="text-danger">you can enter only 50 charachers</div>
+                </div>
+                <div class="mb-3">
+                    <label for="organizationUrl">organizationUrl</label>
+                    <input formControlName="organizationURL" type="text" class="form-control">
+                    <div *ngIf="(getOrganizationFormControls()['organizationURL']?.touched && getOrganizationFormControls()['organizationURL']?.invalid) && getOrganizationFormControls()['organizationURL']?.errors?.['required']" class="text-danger">enter valid password is required field</div>
+                  </div>
+                <div class="mb-3">
+                    <label for="organizationLOGO">organizationLOGO</label>
+                    <input formControlName="organizationLOGO" type="text" class="form-control">
+                    <div *ngIf="(getOrganizationFormControls()['organizationLOGO']?.touched && getOrganizationFormControls()['organizationLOGO']?.invalid) && getOrganizationFormControls()['organizationLOGO']?.errors?.['required']" class="text-danger">enter valid password is required field</div>
+                    <div *ngIf="getOrganizationFormControls()['organizationLOGO']?.errors?.['maxlength']" class="text-danger">you can enter only 200 charachers</div>
+                  </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="cancel" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="addOrganization()">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>

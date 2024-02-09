@@ -1,0 +1,29 @@
+{
+  "LoginUser": [
+    { 
+    "email": "hiren@prishusoft.com", 
+    "password": "Hello@123$", 
+    "organizationUrl": "http://localhost:4200/" 
+} 
+  ],
+  "Organizations": [
+    {
+      "organizationName": "USA", 
+      "organizationShortName": "Apple Inc,microsoft", 
+      "organizationURL": "google.com", 
+      "organizationLOGO": "logo1"
+    },
+    {
+      "organizationName": "Sweden", 
+      "organizationShortName": "IKEA furnitures,Spotify", 
+      "organizationURL": "www.google.com", 
+      "organizationLOGO": "logo2"
+    },
+    {
+      "organizationName": "Finland", 
+      "organizationShortName": "Nokia Communications", 
+      "organizationURL": "http://google.com", 
+      "organizationLOGO": "logo3"
+    }
+  ]
+}

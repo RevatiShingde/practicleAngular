@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="text-center">
+                    <h1>Login</h1>
+                </div>
+                <form [formGroup]="loginForm" class="mt-2">
+                    <div class="row mb-3 d-flex">
+                        <label for="email" class="col-3">Email : </label>
+                        <input formControlName="email" type="email" class="form-control col-9" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        <div *ngIf="(getloginFormControls()['email']?.errors?.['required'] && getloginFormControls()['email']?.invalid) && getloginFormControls()['email']?.errors?.['email']" class="text-danger ml-9">enter valid email is required field</div>
+                    </div>
+                    <div class="mb-3 row d-flex">
+                        <label for="password" class="col-3">Password : </label>
+                        <input formControlName="password" type="password" class="form-control col-9" id="exampleInputPassword1" placeholder="Password">
+                        <div *ngIf="(getloginFormControls()['password']?.touched && getloginFormControls()['password']?.invalid) && getloginFormControls()['password']?.errors?.['required']" class="text-danger ml-9">enter valid password is required field</div>
+                    </div>
+                    <div class="mb-3 row d-flex">
+                        <label for="organizationUrl" class="col-3">organizationUrl : </label>
+                        <input formControlName="organizationUrl" type="text" class="form-control col-9" id="exampleInputPassword1" placeholder="Password">
+                        <div *ngIf="(getloginFormControls()['organizationUrl']?.touched && getloginFormControls()['organizationUrl']?.invalid) && getloginFormControls()['organizationUrl']?.errors?.['required']" class="text-danger ml-9">enter valid organizationUrl is required field</div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid" (click)="onSubmit()">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
